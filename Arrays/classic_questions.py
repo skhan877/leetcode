@@ -4,11 +4,12 @@ Easy
 """
 
 def remove_duplicates(arr): 
-    k = len(set(arr)) 
-    return k 
-
-
-
+    x = 1 
+    for i in range(1, len(arr)): 
+        if arr[i] != arr[i-1]: 
+            arr[x] = arr[i] 
+            x += 1 
+    return x, arr 
 
 
 def main(): 
