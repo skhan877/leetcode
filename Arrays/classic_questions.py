@@ -51,9 +51,29 @@ def intersect(nums1, nums2):
                 break
     return result
 
+def plus_one(digits): 
+    s = "".join(map(str, digits))
+    s = [int(x) for x in str(int(s) + 1)]
+    return s 
+
+def move_zeroes(nums): 
+    n = len(nums)
+    for i in range(n-1, -1 , -1): 
+        if nums[i] == 0: 
+            nums.append(nums.pop(i))
+    return nums 
+
+
+
 
 def main(): 
     
+    # assert move_zeroes([0,1,0,3,12]) == [1,3,12,0,0]
+    # assert move_zeroes([0]) == [0]
+    # assert plus_one([1,2,3]) == [1,2,4]
+    # assert plus_one([4,3,2,1]) == [4,3,2,2]
+    # assert plus_one([9]) == [1,0]
+    # assert plus_one([0]) == [1]
     # assert intersect([1], [2,2,1]) == [1]
     # assert intersect([1], [2,2]) == []
     # assert intersect([1,2,2,1], [2,2]) == [2,2]
