@@ -70,13 +70,66 @@ def two_sum(nums, target):
             if (nums[i] + nums[j]) == target:
                 return [i, j] 
 
+def valid_sudoku(M): 
+    from collections import Counter 
+
+    n = len(M)
+    ans = True  
+    
+    def valid_array(arr): 
+        counts = Counter(arr)
+        for k, v in counts.items(): 
+            if k != "." and v > 1:
+                return False 
+
+    while ans:
+
+        # check rows 
+        for i in range(n): 
+            ans = valid_array(M[1])
+
+            # check cols
+            col = [] 
+            for j in range(n): 
+                col.append(M[j][i])
+            ans = valid_array(col)
+
+    # 3x3 grids
+    for x in range(3,n+1,3):
+        # grid = []
+        for i in range(x-3,x): 
+            grid = []
+            for j in range(x-3,x):
+                print('j', i, j)
+                # grid.append(M[i][j])
+            grid = []
+            for k in range(x, x+3): 
+                print('k', i, k) 
+                # grid.appen
+            for l in range(x+3, n): 
+                print('l', i, l)
+        # print([x-3, x], grid)
+            print("")
+
+    return ans 
+                
 
 
 def main(): 
     
-    assert two_sum([2,7,11,15], 9) == [0,1]
-    assert two_sum([3,2,4], 6) == [1,2]
-    assert two_sum([3,3], 6) == [0,1]
+    board = [["5","3",".",".","7",".",".",".","."]
+            ,["6",".",".","1","9","5",".",".","."]
+            ,[".","9","8",".",".",".",".","6","."]
+            ,["8",".",".",".","6",".",".",".","3"]
+            ,["4",".",".","8",".","3",".",".","1"]
+            ,["7",".",".",".","2",".",".",".","6"]
+            ,[".","6",".",".",".",".","2","8","."]
+            ,[".",".",".","4","1","9",".",".","5"]
+            ,[".",".",".",".","8",".",".","7","9"]]
+    print(valid_sudoku(board))
+    # assert two_sum([2,7,11,15], 9) == [0,1]
+    # assert two_sum([3,2,4], 6) == [1,2]
+    # assert two_sum([3,3], 6) == [0,1]
     # assert move_zeroes([0,1,0,3,12]) == [1,3,12,0,0]
     # assert move_zeroes([0]) == [0]
     # assert plus_one([1,2,3]) == [1,2,4]
