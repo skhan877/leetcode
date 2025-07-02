@@ -74,57 +74,57 @@ def valid_sudoku(M):
     from collections import Counter 
 
     n = len(M)
-    ans = True  
     
     def valid_array(arr): 
         counts = Counter(arr)
+        result = True 
         for k, v in counts.items(): 
             if k != "." and v > 1:
-                return False 
+                result = False
+        return result  
             
 
-    while ans:
+    checks = []
 
-        # check rows 
-        for i in range(n): 
-            ans = valid_array(M[1])
+    # check rows 
+    for i in range(n): 
+        checks.append(valid_array(M[i]))
 
-    #         # check cols
-    #         col = [] 
-    #         for j in range(n): 
-    #             col.append(M[j][i])
-    #         ans = valid_array(col)
+        # check cols
+        col = [] 
+        for j in range(n): 
+            col.append(M[j][i])
+        checks.append(valid_array(col))
 
-        # 3x3 grids
-        # subgrids = []
-        # x = 3
-        # while x <= n:
-        #     grid = [M[i][j] for i in range(0,3) for j in range(x-3, x)]
-        #     x += 3
-        #     subgrids.append(grid)
+    # 3x3 grids
+    subgrids = []
+    x = 3
+    while x <= n:
+        grid = [M[i][j] for i in range(0,3) for j in range(x-3, x)]
+        x += 3
+        subgrids.append(grid)
 
-        # x = 3
-        # while x <= n:
-        #     grid = [M[i][j] for i in range(3,6) for j in range(x-3, x)]
-        #     x += 3
-        #     subgrids.append(grid)
+    x = 3
+    while x <= n:
+        grid = [M[i][j] for i in range(3,6) for j in range(x-3, x)]
+        x += 3
+        subgrids.append(grid)
 
-        # x = 3
-        # while x <= n:
-        #     grid = [M[i][j] for i in range(6,9) for j in range(x-3, x)]
-        #     x += 3
-        #     subgrids.append(grid)
+    x = 3
+    while x <= n:
+        grid = [M[i][j] for i in range(6,9) for j in range(x-3, x)]
+        x += 3
+        subgrids.append(grid)
 
-        # for sub in subgrids: 
-        #     ans = valid_array(sub)
+    for sub in subgrids:
+        checks.append(valid_array(sub)) 
 
-    return ans 
-
+    return False not in checks
 
 
 def main(): 
     
-    board = [["5","3",".",".","7",".",".",".","."]
+    board1 = [["5","3",".",".","7",".",".",".","."]
             ,["6",".",".","1","9","5",".",".","."]
             ,[".","9","8",".",".",".",".","6","."]
             ,["8",".",".",".","6",".",".",".","3"]
@@ -133,7 +133,19 @@ def main():
             ,[".","6",".",".",".",".","2","8","."]
             ,[".",".",".","4","1","9",".",".","5"]
             ,[".",".",".",".","8",".",".","7","9"]]
-    print(valid_sudoku(board))
+    
+    board2 = [["8","3",".",".","7",".",".",".","."]
+            ,["6",".",".","1","9","5",".",".","."]
+            ,[".","9","8",".",".",".",".","6","."]
+            ,["8",".",".",".","6",".",".",".","3"]
+            ,["4",".",".","8",".","3",".",".","1"]
+            ,["7",".",".",".","2",".",".",".","6"]
+            ,[".","6",".",".",".",".","2","8","."]
+            ,[".",".",".","4","1","9",".",".","5"]
+            ,[".",".",".",".","8",".",".","7","9"]]
+    
+    assert valid_sudoku(board1) == True 
+    assert valid_sudoku(board2) == False
     # assert two_sum([2,7,11,15], 9) == [0,1]
     # assert two_sum([3,2,4], 6) == [1,2]
     # assert two_sum([3,3], 6) == [0,1]
