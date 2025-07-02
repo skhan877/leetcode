@@ -81,6 +81,7 @@ def valid_sudoku(M):
         for k, v in counts.items(): 
             if k != "." and v > 1:
                 return False 
+            
 
     while ans:
 
@@ -88,31 +89,37 @@ def valid_sudoku(M):
         for i in range(n): 
             ans = valid_array(M[1])
 
-            # check cols
-            col = [] 
-            for j in range(n): 
-                col.append(M[j][i])
-            ans = valid_array(col)
+    #         # check cols
+    #         col = [] 
+    #         for j in range(n): 
+    #             col.append(M[j][i])
+    #         ans = valid_array(col)
 
-    # 3x3 grids
-    for x in range(3,n+1,3):
-        # grid = []
-        for i in range(x-3,x): 
-            grid = []
-            for j in range(x-3,x):
-                print('j', i, j)
-                # grid.append(M[i][j])
-            grid = []
-            for k in range(x, x+3): 
-                print('k', i, k) 
-                # grid.appen
-            for l in range(x+3, n): 
-                print('l', i, l)
-        # print([x-3, x], grid)
-            print("")
+        # 3x3 grids
+        # subgrids = []
+        # x = 3
+        # while x <= n:
+        #     grid = [M[i][j] for i in range(0,3) for j in range(x-3, x)]
+        #     x += 3
+        #     subgrids.append(grid)
+
+        # x = 3
+        # while x <= n:
+        #     grid = [M[i][j] for i in range(3,6) for j in range(x-3, x)]
+        #     x += 3
+        #     subgrids.append(grid)
+
+        # x = 3
+        # while x <= n:
+        #     grid = [M[i][j] for i in range(6,9) for j in range(x-3, x)]
+        #     x += 3
+        #     subgrids.append(grid)
+
+        # for sub in subgrids: 
+        #     ans = valid_array(sub)
 
     return ans 
-                
+
 
 
 def main(): 
