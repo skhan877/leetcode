@@ -34,10 +34,15 @@ def first_unique_ch(s):
             idxs.append(list(s).index(k))
     return min(idxs) if idxs else -1 
 
-
+def anagram(s, t): 
+    from collections import Counter 
+    return Counter(list(s)) == Counter(list(t))
     
 
 def main(): 
+
+    assert anagram("anagram", "nagaram") == True
+    assert anagram("rat", "cart") == False
 
     assert first_unique_ch("leetcode") == 0 
     assert first_unique_ch("aabb") == -1
