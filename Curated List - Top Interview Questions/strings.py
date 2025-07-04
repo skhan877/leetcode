@@ -55,8 +55,25 @@ def strStr(needle, haystack):
             q += 1 
     return -1 
 
+def longest_prefix(strs): 
+    shortest = min([len(s) for s in strs]) 
+    prefix = [] 
+    i = 0
+    while i <= shortest:
+        cur_check = [] 
+        for s in strs:
+            cur_check.append(s[i])
+        i += 1 
+        print(cur_check)
+
+        
+
+
 
 def main(): 
+
+    assert longest_prefix(["flower", "flow", "flight"]) == "fl" 
+    assert longest_prefix(["dog", "racecar", "car"]) == "" 
 
     assert strStr("s", "s") == 0 
     assert strStr("sad", "sadbutsad") == 0 
