@@ -38,8 +38,33 @@ def anagram(s, t):
     from collections import Counter 
     return Counter(list(s)) == Counter(list(t))
     
+def palindrome(s):
+    s = s.lower() 
+    s = "".join([ch for ch in s if ch.isalpha() or ch.isnumeric()])
+    return s == s[::-1]
+
+def strStr(needle, haystack):
+    if needle == haystack:
+        return 0 
+    p, q = 0, len(needle) 
+    while q <= len(haystack): 
+        if haystack[p:q] == needle:
+            return p 
+        else:
+            p += 1
+            q += 1 
+    return -1 
+
 
 def main(): 
+
+    assert strStr("s", "s") == 0 
+    assert strStr("sad", "sadbutsad") == 0 
+    assert strStr("leeto", "leetcode") == -1 
+
+    assert palindrome("A man, a plan, a canal: Panama") == True 
+    assert palindrome("race a car") == False 
+    assert palindrome(" ") == True 
 
     assert anagram("anagram", "nagaram") == True
     assert anagram("rat", "cart") == False
