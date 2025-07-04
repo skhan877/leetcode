@@ -59,12 +59,17 @@ def longest_prefix(strs):
     shortest = min([len(s) for s in strs]) 
     prefix = [] 
     i = 0
-    while i <= shortest:
-        cur_check = [] 
+    while i < shortest:
+        cur_check = []
         for s in strs:
             cur_check.append(s[i])
-        i += 1 
-        print(cur_check)
+        if len(set(cur_check)) == 1:
+            prefix.append(cur_check[0])
+            i += 1 
+        else:
+            break 
+        
+    return "".join(prefix)
 
         
 
@@ -72,6 +77,8 @@ def longest_prefix(strs):
 
 def main(): 
 
+    assert longest_prefix(["car", "cir"]) == "c" 
+    assert longest_prefix(["s", "shop", "shoot"]) == "s" 
     assert longest_prefix(["flower", "flow", "flight"]) == "fl" 
     assert longest_prefix(["dog", "racecar", "car"]) == "" 
 
