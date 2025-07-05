@@ -36,16 +36,20 @@ def remove_nth_last_node(head, n):
             ans.append(cur_node.val)
             cur_node = cur_node.next 
     else: 
-        pass 
-        
-    print(ans)
-    return ans
+        while i < list_len: 
+            if i != node_to_rem:
+                ans.append(cur_node.val)
+            cur_node = cur_node.next 
+            i += 1
+
+    return ans 
 
 
 def main():
-    
+        
     assert(remove_nth_last_node(head, 4)) == [5,1,9]
-    # assert(remove_nth_last_node(head, 2)) == [4,5,9]
+    assert(remove_nth_last_node(head, 2)) == [4,5,9]
+    assert(remove_nth_last_node(head, 1)) == [4,5,1]
     
 
 
