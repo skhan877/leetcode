@@ -16,12 +16,36 @@ def delete_note(node):
     node.val = node.next.val 
     node.next = node.next.next 
 
+def remove_nth_last_node(head, n): 
+    list_len = 1
+    cur_node = head 
+    while cur_node.next:
+        list_len += 1 
+        cur_node = cur_node.next
+    
+    node_to_rem = list_len - n 
+    i = 0 
+    ans = []
+    cur_node = head 
 
+    if list_len == 1:
+        return ans 
+    elif list_len == n:
+        cur_node = cur_node.next 
+        while cur_node:
+            ans.append(cur_node.val)
+            cur_node = cur_node.next 
+    else: 
+        pass 
+        
+    print(ans)
+    return ans
 
 
 def main():
     
-    pass
+    assert(remove_nth_last_node(head, 4)) == [5,1,9]
+    # assert(remove_nth_last_node(head, 2)) == [4,5,9]
     
 
 
@@ -39,6 +63,6 @@ if __name__ == "__main__":
     node3.next = node4 
 
     print(f"{head.val} -> {head.next.val} -> {head.next.next.val} -> {head.next.next.next.val}")
-
+    print("")
 
     main() 
