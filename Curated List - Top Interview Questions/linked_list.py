@@ -44,12 +44,24 @@ def remove_nth_last_node(head, n):
 
     return ans 
 
+def reverse_list(head):
+    prev = None 
+    while head: 
+        cur = head 
+        head = head.next 
+        cur.next = prev 
+        prev = cur 
+    return head 
+    
 
 def main():
-        
-    assert(remove_nth_last_node(head, 4)) == [5,1,9]
-    assert(remove_nth_last_node(head, 2)) == [4,5,9]
-    assert(remove_nth_last_node(head, 1)) == [4,5,1]
+
+
+    print(reverse_list(head))
+
+    # assert(remove_nth_last_node(head, 4)) == [5,1,9]
+    # assert(remove_nth_last_node(head, 2)) == [4,5,9]
+    # assert(remove_nth_last_node(head, 1)) == [4,5,1]
     
 
 
