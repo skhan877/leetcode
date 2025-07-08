@@ -53,11 +53,42 @@ def reverse_list(head):
         prev = cur 
     return head 
     
+def merge_lists(list1, list2): 
+    
+    if not list1 and not list2:
+            return list1
+        
+        else:
+            merged = []
+            while list1: 
+                if list2:
+                    if list1.val <= list2.val:
+                        merged.append(list1.val)
+                        list1 = list1.next
+                    elif list2.val < list1.val: 
+                        merged.append(list2.val)
+                        list2 = list2.next
+                else:
+                    merged.append(list1.val)
+                    list1 = list1.next
+
+            while list2:
+                merged.append(list2.val)
+                list2 = list2.next 
+
+            head = ListNode(merged[0])
+            current = head 
+
+            for item in merged[1:]:
+                current.next = ListNode(item)
+                current = current.next 
+
+            return head 
+
 
 def main():
 
-
-    print(reverse_list(head))
+    # print(reverse_list(head))
 
     # assert(remove_nth_last_node(head, 4)) == [5,1,9]
     # assert(remove_nth_last_node(head, 2)) == [4,5,9]
