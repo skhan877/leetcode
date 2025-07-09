@@ -58,35 +58,46 @@ def merge_lists(list1, list2):
     if not list1 and not list2:
             return list1
         
-        else:
-            merged = []
-            while list1: 
-                if list2:
-                    if list1.val <= list2.val:
-                        merged.append(list1.val)
-                        list1 = list1.next
-                    elif list2.val < list1.val: 
-                        merged.append(list2.val)
-                        list2 = list2.next
-                else:
+    else:
+        merged = []
+        while list1: 
+            if list2:
+                if list1.val <= list2.val:
                     merged.append(list1.val)
                     list1 = list1.next
+                elif list2.val < list1.val: 
+                    merged.append(list2.val)
+                    list2 = list2.next
+            else:
+                merged.append(list1.val)
+                list1 = list1.next
 
-            while list2:
-                merged.append(list2.val)
-                list2 = list2.next 
+        while list2:
+            merged.append(list2.val)
+            list2 = list2.next 
 
-            head = ListNode(merged[0])
-            current = head 
+        head = ListNode(merged[0])
+        current = head 
 
-            for item in merged[1:]:
-                current.next = ListNode(item)
-                current = current.next 
+        for item in merged[1:]:
+            current.next = ListNode(item)
+            current = current.next 
 
-            return head 
+        return head 
+
+def palindome(head): 
+    if not head: return True 
+    arr = [] 
+    while head: 
+        arr.append(head.val)
+        head = head.next 
+    
+    return arr[::] == arr[::-1]
 
 
 def main():
+
+    assert palindome(head) == False 
 
     # print(reverse_list(head))
 
