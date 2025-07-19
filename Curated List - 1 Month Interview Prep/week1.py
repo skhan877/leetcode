@@ -27,13 +27,25 @@ def matchingStrings(strings, queries):
     result = [strings.count(q) for q in queries]
     return result 
 
+def lonelyInteger(arr): 
+    stack = [] 
+    for x in sorted(arr): 
+        if stack and stack[-1] == x:
+            stack.pop(-1)
+        else:
+            stack.append(x) 
+    return stack[-1]
+
 
 def main(): 
 
-    assert(matchingStrings(["ab", "ab", "abc"], ["ab", "abc", "bc"])) == [2, 1, 0]
+    assert lonelyInteger([1,2,3,4,3,2,1]) == 4
+    assert lonelyInteger([0,0,1,2,1]) == 2
 
-    assert(pangram("hello")) == "not pangram"
-    assert(pangram("The quick brown fox jumps over the lazy dog")) == "pangram" 
+    assert matchingStrings(["ab", "ab", "abc"], ["ab", "abc", "bc"]) == [2, 1, 0]
+
+    assert pangram("hello") == "not pangram"
+    assert pangram("The quick brown fox jumps over the lazy dog") == "pangram" 
 
     # minMaxSum([1,3,5,7,9])
     # minMaxSum([1,2,3,4,5])
