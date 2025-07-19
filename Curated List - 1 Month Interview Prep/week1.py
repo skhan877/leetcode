@@ -12,9 +12,26 @@ def plusMinus(arr):
     print(format(neg/n, ".6f"))
     print(format(zero/n, ".6f"))
 
+def minMaxSum(arr): 
+    arr = sorted(arr) 
+    minSum = sum(arr[:4])
+    maxSum = sum(arr[-4:])
+    print(minSum, maxSum)
+
+def pangram(s): 
+    alphabet = set("abcdefghijklmnopqrstuvwxyz")
+    s_set = set(s.lower().replace(" ", ""))
+    return "pangram" if alphabet == s_set else "not pangram"
+
 
 def main(): 
-    
+
+    assert(pangram("hello")) == "not pangram"
+    assert(pangram("The quick brown fox jumps over the lazy dog")) == "pangram" 
+
+    # minMaxSum([1,3,5,7,9])
+    # minMaxSum([1,2,3,4,5])
+
     # plusMinus([1,1,0,-1,-1])
     # plusMinus([-4,3,-9,0,4,1])
 
