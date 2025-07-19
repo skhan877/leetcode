@@ -43,8 +43,21 @@ def flippingBits(n):
     flipped = "".join([str(d) for d in digits + bits])
     return int(flipped, 2)
 
+def diagDiff(arr): 
+    primary = [arr[i][i] for i in range(len(arr))]
+    secondary = [arr[i][len(arr)-1-i] for i in range(len(arr))]
+    diff = abs(sum(primary) - sum(secondary))
+    return diff
+
+def countingSort(arr): 
+    pass 
+ 
+
 
 def main(): 
+
+    assert diagDiff([[1,2,3], [4,5,6], [9,8,9]]) == 2 
+    assert diagDiff([[11,2,4], [4,5,6], [10,8,-12]]) == 15 
 
     assert flippingBits(9) == 4294967286
     assert flippingBits(2147483647) == 2147483648
