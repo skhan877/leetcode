@@ -36,8 +36,20 @@ def lonelyInteger(arr):
             stack.append(x) 
     return stack[-1]
 
+def flippingBits(n): 
+    bits = [abs(int(bit) - 1) for bit in bin(n).replace("0b", "")]
+    leading_zeros = 32 - len(bits)
+    digits = [1] * leading_zeros 
+    flipped = "".join([str(d) for d in digits + bits])
+    return int(flipped, 2)
+
 
 def main(): 
+
+    assert flippingBits(9) == 4294967286
+    assert flippingBits(2147483647) == 2147483648
+    assert flippingBits(1) == 4294967294
+    assert flippingBits(0) == 4294967295
 
     assert lonelyInteger([1,2,3,4,3,2,1]) == 4
     assert lonelyInteger([0,0,1,2,1]) == 2
