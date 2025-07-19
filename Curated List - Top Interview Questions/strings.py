@@ -75,28 +75,25 @@ def make_anagram(a, b):
     from collections import Counter 
     freq_a, freq_b = Counter(a), Counter(b) 
     in_both = freq_a & freq_b
-    print(freq_a)
-    print(freq_b)
-    print(in_both)
-    dels = 0 
-    for k, v in in_both.items():
-        # if k, v in a, ignore. 
-        # if k, v in b, ignore.
-        # delete the rest 
-        if v : 
-            dels += v % 2
-    print(dels)
-    return dels
+    tot_chars = len(a) + len(b)
+
+    if not in_both: 
+        return tot_chars 
+    else: 
+        for v in in_both.values(): 
+            tot_chars -= (v * 2)
+        return tot_chars
+
 
 
 def main(): 
 
-    # assert(make_anagram("cde", "dcf")) == 2
-    # assert(make_anagram("cde", "dcf")) == 2
-    # assert(make_anagram("", "abc")) == 3
-    # assert(make_anagram("abc", "")) == 3
+    assert(make_anagram("cde", "dcf")) == 2
+    assert(make_anagram("cde", "dcf")) == 2
+    assert(make_anagram("", "abc")) == 3
+    assert(make_anagram("abc", "")) == 3
     assert(make_anagram("abc", "adddd")) == 6
-    # assert(make_anagram("fcrxzwscanmligyxyvym", "jxwtrhvujlmrpdoqbisbwhmgpmeoke")) == 30
+    assert(make_anagram("fcrxzwscanmligyxyvym", "jxwtrhvujlmrpdoqbisbwhmgpmeoke")) == 30
 
     assert longest_prefix(["car", "cir"]) == "c" 
     assert longest_prefix(["s", "shop", "shoot"]) == "s" 
