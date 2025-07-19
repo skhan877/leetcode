@@ -23,8 +23,14 @@ def pangram(s):
     s_set = set(s.lower().replace(" ", ""))
     return "pangram" if alphabet == s_set else "not pangram"
 
+def matchingStrings(strings, queries): 
+    result = [strings.count(q) for q in queries]
+    return result 
+
 
 def main(): 
+
+    assert(matchingStrings(["ab", "ab", "abc"], ["ab", "abc", "bc"])) == [2, 1, 0]
 
     assert(pangram("hello")) == "not pangram"
     assert(pangram("The quick brown fox jumps over the lazy dog")) == "pangram" 
