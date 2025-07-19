@@ -50,11 +50,20 @@ def diagDiff(arr):
     return diff
 
 def countingSort(arr): 
-    pass 
- 
+    freq = [0] * 100
+    for idx in arr: 
+        freq[idx] += 1 
+    # result = []
+    # for i in range(len(freq)): 
+    #     if freq[i] != 0: 
+    #         result.extend([i] * freq[i])
+    # return result
+    return freq 
 
 
 def main(): 
+
+    assert countingSort([1,1,3,2,1]) == [0,3,1,1]
 
     assert diagDiff([[1,2,3], [4,5,6], [9,8,9]]) == 2 
     assert diagDiff([[11,2,4], [4,5,6], [10,8,-12]]) == 15 
