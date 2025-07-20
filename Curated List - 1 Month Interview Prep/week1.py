@@ -53,11 +53,6 @@ def countingSort(arr):
     freq = [0] * 4
     for idx in arr: 
         freq[idx] += 1 
-    # result = []
-    # for i in range(len(freq)): 
-    #     if freq[i] != 0: 
-    #         result.extend([i] * freq[i])
-    # return result
     return freq 
 
 def twoArrays(k, A, B): 
@@ -69,8 +64,21 @@ def twoArrays(k, A, B):
             return "NO" 
     return "YES"
 
+def birthday(s, d, m): 
+    valid = 0 
+    for i in range(len(s)): 
+        segment = s[i:i+m] 
+        if sum(segment) == d:
+            valid += 1 
+    return valid
+
+
+
+
 
 def main(): 
+
+    assert birthday([2,2,1,3,2], 4, 2) == 2
 
     assert twoArrays(10, [2,1,3], [7,8,9]) == "YES"
     assert twoArrays(5, [1,2,2,1], [3,3,3,4]) == "NO"
