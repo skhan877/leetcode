@@ -18,6 +18,18 @@ def minMaxSum(arr):
     maxSum = sum(arr[-4:])
     print(minSum, maxSum)
 
+def timeConversion(s):
+    split = s.split(":") 
+    H, M, S, X = split[0], split[1], split[2][:2], split[2][-2:] 
+    if X == "PM": 
+        if H != "12":
+            H = str(int(H) + 12)
+    else:
+        if H == "12":
+            H = "00" 
+
+    return H + ":" + M + ":" + S 
+
 def pangram(s): 
     alphabet = set("abcdefghijklmnopqrstuvwxyz")
     s_set = set(s.lower().replace(" ", ""))
@@ -72,11 +84,20 @@ def birthday(s, d, m):
             valid += 1 
     return valid
 
-
+def strings_xor(s, t): 
+    res = ""
+    for i in range(len(s)): 
+        if s[i] == t[i]: 
+            res += "0"
+        else:
+            res += "1"
+    return res 
 
 
 
 def main(): 
+
+    assert strings_xor("10101", "00101") == "10000"
 
     assert birthday([2,2,1,3,2], 4, 2) == 2
 
@@ -101,6 +122,9 @@ def main():
 
     assert pangram("hello") == "not pangram"
     assert pangram("The quick brown fox jumps over the lazy dog") == "pangram" 
+
+    assert timeConversion("12:01:00PM") == "12:01:00"
+    assert timeConversion("12:01:00AM") == "00:01:00"
 
     # minMaxSum([1,3,5,7,9])
     # minMaxSum([1,2,3,4,5])
