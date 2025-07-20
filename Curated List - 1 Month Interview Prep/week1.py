@@ -50,7 +50,7 @@ def diagDiff(arr):
     return diff
 
 def countingSort(arr): 
-    freq = [0] * 100
+    freq = [0] * 4
     for idx in arr: 
         freq[idx] += 1 
     # result = []
@@ -60,8 +60,21 @@ def countingSort(arr):
     # return result
     return freq 
 
+def twoArrays(k, A, B): 
+    A = sorted(A) 
+    B = sorted(B, reverse=True) 
+    n = len(A)
+    for i in range(n): 
+        if A[i] + B[i] < k: 
+            return "NO" 
+    return "YES"
+
 
 def main(): 
+
+    assert twoArrays(10, [2,1,3], [7,8,9]) == "YES"
+    assert twoArrays(5, [1,2,2,1], [3,3,3,4]) == "NO"
+    assert twoArrays(1, [0,1], [0,2]) == "YES"
 
     assert countingSort([1,1,3,2,1]) == [0,3,1,1]
 
