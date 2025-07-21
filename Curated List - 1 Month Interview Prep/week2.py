@@ -22,8 +22,21 @@ def findZigZagSequence(a, n):
 
     return a
 
+def pageCount(n, p):     
+    pages_from_start = (p // 2)
+    pages_from_end = (n - p) // 2 
+    if n % 2 == 0: 
+        pages_from_end = (1 + n - p) // 2 
+
+    return min(pages_from_end, pages_from_start)
+
 
 def main(): 
+
+    assert pageCount(6, 2) == 1 
+    assert pageCount(5, 3) == 1 
+    assert pageCount(15, 15) == 0 
+    assert pageCount(7, 5) == 1
 
     assert findZigZagSequence([2,3,5,1,4,9,7,6,8], 9) == [1,2,3,4,9,8,7,6,5]
     assert findZigZagSequence([2,3,5,1,4], 5) == [1,2,5,4,3]
