@@ -30,8 +30,19 @@ def pageCount(n, p):
 
     return min(pages_from_end, pages_from_start)
 
+def towerBreakers(n, m): 
+    if n % 2 == 0 or m == 1: 
+        return 2
+    else:
+        return 1
+
+
 
 def main(): 
+
+    assert towerBreakers(2, 2) == 2
+    assert towerBreakers(2, 6) == 2
+    assert towerBreakers(1, 4) == 1
 
     assert pageCount(6, 2) == 1 
     assert pageCount(5, 3) == 1 
