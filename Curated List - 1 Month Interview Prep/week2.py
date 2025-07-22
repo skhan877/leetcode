@@ -36,9 +36,28 @@ def towerBreakers(n, m):
     else:
         return 1
 
+def caeserCipher(s, k): 
+    alphabet = list("abcdefghijklmnopqrstuvwxyz")
+    rotated = [alphabet[(i + k) % 26] for i in range(26)]
+    encrypted = "" 
+    for char in s: 
+        if char.isalpha():
+            position = alphabet.index(char.lower())
+            encrypted_char = rotated[position]
+            if char.isupper(): 
+                encrypted += encrypted_char.upper()
+            else:
+                encrypted += encrypted_char
+        else:
+            encrypted += char
+
+    return encrypted 
+
 
 
 def main(): 
+
+    assert caeserCipher("middle-Outz", 2) == "okffng-Qwvb"
 
     assert towerBreakers(2, 2) == 2
     assert towerBreakers(2, 6) == 2
