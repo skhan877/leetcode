@@ -53,6 +53,20 @@ def caeserCipher(s, k):
 
     return encrypted 
 
+def dynamicArray(n, queries): 
+    arr = [list() for i in range(n)] 
+    lastAnswer = 0
+    answers = []
+    for query in queries:
+        op, x, y = query[0], query[1], query[2]
+        idx = ((x ^ lastAnswer) % n)
+        if op == 1: 
+            arr[idx].append(y) 
+        else: 
+            lastAnswer = arr[idx][y % len(arr[idx])]
+            answers.append(lastAnswer)
+
+    return answers
 
 
 def main(): 
