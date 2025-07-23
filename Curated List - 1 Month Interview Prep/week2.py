@@ -68,8 +68,63 @@ def dynamicArray(n, queries):
 
     return answers
 
+def maxMin(arr, k): 
+    # FAILING TESTS - WORK NEEDED
+    n = len(arr)
+    arr = sorted(arr)
+
+    if n == k: 
+        diff =  arr[-1] - arr[0]
+        return diff
+
+    else:
+        minDiff = float("inf") 
+        for i in range(n-k):
+            subarr = arr[i:i+k] 
+            diff = maxMin(subarr, k)
+            minDiff = min(minDiff, diff) 
+        return minDiff
+    
+def gridChallenge(grid): 
+
+    def isSorted(arr): 
+        n = len(arr) 
+        for i in range(1, n): 
+            if arr[i-1] > arr[i]: 
+                return False 
+        return True 
+
+    for r in range(len(grid)):
+        if not isSorted(grid[r]):
+            grid[r] = sorted(grid[r])
+
+    col_checks = True
+    for i in range(len(grid[0])):
+        col = ""
+        for j in range(len(grid)):
+            col += grid[j][i]
+        if not isSorted(col):
+            col_checks = False
+    
+    return "YES" if col_checks else "NO"
+
+
 
 def main(): 
+
+    assert gridChallenge(['abc','ade','efg']) == "YES"
+    assert gridChallenge(['abc','zxy','efg']) == "NO"
+    assert gridChallenge(['ebacd', 'fghij', 'olmkn', 'trpqs', 'xywuv']) == "YES"
+    assert gridChallenge(['abc','lmp','qrt']) == "YES"
+    assert gridChallenge(['mpxz','abcd','wlmf']) == "NO"
+    assert gridChallenge(['abc','hjk','mpq','rtv']) == "YES"
+
+    assert maxMin([0,0], 2) == 0 
+    assert maxMin([1,1], 2) == 0
+    assert maxMin([1,10], 2) == 9 
+    assert maxMin([1,2,3,4,10,20,30,40,100,200], 4) == 3 
+    assert maxMin([1,4,7,2], 2) == 1 
+    assert maxMin([1,4,7,2], 3) == 3 
 
     assert caeserCipher("middle-Outz", 2) == "okffng-Qwvb"
 
