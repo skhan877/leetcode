@@ -108,9 +108,31 @@ def gridChallenge(grid):
     
     return "YES" if col_checks else "NO"
 
+def balancedSums(arr): 
+    n = len(arr) 
+    if n == 1:
+        return "YES"
+    
+    left, right = 0, sum(arr[1:]) 
+    if left == right:
+        return "YES" 
+    else:
+        for i in range(1, n): 
+            left += arr[i-1]
+            right -= arr[i]
+            if left == right: 
+                return "YES"
+    return "NO"
+    
+
 
 
 def main(): 
+
+    assert balancedSums([1]) == "YES"
+    assert balancedSums([1,2,3]) == "NO"
+    assert balancedSums([1,2,3,3]) == "YES"
+    assert balancedSums([2,0,0,0]) == "YES"
 
     assert gridChallenge(['abc','ade','efg']) == "YES"
     assert gridChallenge(['abc','zxy','efg']) == "NO"
