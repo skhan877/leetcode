@@ -135,10 +135,32 @@ def superDigit(n, k):
     digitSum *= k
     return superDigit(str(digitSum), 1) 
     
+def counterGame(n): 
+    from math import log2 
+
+    counter = 0 
+
+    if n == 1 and counter == 0: 
+        return "Richard"
+    
+    while n > 1:
+        counter += 1
+        if log2(n) == round(log2(n), 0):
+            # is a power of 2
+            n /= 2 
+        else: 
+            # find next power of 2
+            n -= (2 ** int(log2(n)))
+    
+    return "Richard" if counter % 2 == 0 else "Louise"
 
 
 def main(): 
 
+    assert counterGame(1) == "Richard"
+    assert counterGame(2) == "Louise"
+    assert counterGame(132) == "Louise"
+    
     assert superDigit("148", 3) == 3 
     assert superDigit("9875", 4) == 8 
 
