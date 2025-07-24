@@ -124,10 +124,23 @@ def balancedSums(arr):
                 return "YES"
     return "NO"
     
-
+def superDigit(n, k): 
+    if len(n) == 1 and k == 1: 
+        return int(n) 
+    
+    digit = n
+    digitSum = 0 
+    for d in digit: 
+        digitSum += int(d)
+    digitSum *= k
+    return superDigit(str(digitSum), 1) 
+    
 
 
 def main(): 
+
+    assert superDigit("148", 3) == 3 
+    assert superDigit("9875", 4) == 8 
 
     assert balancedSums([1]) == "YES"
     assert balancedSums([1,2,3]) == "NO"
