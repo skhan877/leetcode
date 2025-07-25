@@ -154,8 +154,37 @@ def counterGame(n):
     
     return "Richard" if counter % 2 == 0 else "Louise"
 
+def sumXor(n): 
+    from math import log 
+    
+    if n >= 4 and log(n, 4) == round(log(n, 4), 0):
+        # is a power of 4 
+        return n 
+    
+    elif n - 1 >= 4 and log(n - 1, 4) == round(log(n - 1, 4), 0):
+        # is a power of 4 
+        return (n - 1) // 2
+
+
+    elif n - 2 >= 4 and log(n - 2, 4) == round(log(n - 2, 4), 0):
+        # is a power of 4 
+        return (n - 2) // 2
+
+    count = 0 
+    for x in range(n + 1): 
+        if n + x == n ^ x:
+            count += 1 
+    return count 
+
+
+
 
 def main(): 
+
+    assert sumXor(3) == 1 
+    assert sumXor(4) == 4 
+    assert sumXor(5) == 2 
+    assert sumXor(10) == 4 
 
     assert counterGame(1) == "Richard"
     assert counterGame(2) == "Louise"
