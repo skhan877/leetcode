@@ -40,15 +40,32 @@ def reverseLinkedList(llist):
         cur.next = prev 
         prev = cur 
         cur = nxt 
-    return prev.data
+    return prev
     
+def insertNodeAtPosition(llist, data, position): 
+    if not llist:
+        llist = SLL() 
+        sll.insert_node(data)
+    else:
+        dummy = llist  
+        i = 1
+        while i < position: 
+            dummy = dummy.next 
+            i += 1
+        nxt = dummy.next 
+        new_node = Node(data) 
+        dummy.next = new_node 
+        new_node.next = nxt 
+    return llist  
+        
+
 
 
 
 
 def main(): 
     
-    assert reverseLinkedList(sll.head) == 9 
+    assert reverseLinkedList(sll.head).data == 9
 
 
 if __name__ == "__main__":
