@@ -58,6 +58,28 @@ def insertNodeAtPosition(llist, data, position):
         new_node.next = nxt 
     return llist  
         
+def mergeLists(head1, head2): 
+    if not head1: return head2 
+    if not head2: return head1 
+
+    merged = SLL() 
+    while head1 and head2: 
+        if head1.data <= head2.data: 
+            merged.insert_node(head1.data)
+            head1 = head1.next 
+        elif head2.data < head1.data: 
+            merged.insert_node(head2.data)
+            head2 = head2.next 
+    
+    while head1:
+        merged.insert_node(head1.data)
+        head1 = head1.next
+    
+    while head2: 
+        merged.insert_nodeh(head2.data)
+        head2 = head2.next 
+    
+    return merged.head  
 
 
 
@@ -66,6 +88,7 @@ def insertNodeAtPosition(llist, data, position):
 def main(): 
     
     assert reverseLinkedList(sll.head).data == 9
+
 
 
 if __name__ == "__main__":
