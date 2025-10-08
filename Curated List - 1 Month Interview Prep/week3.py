@@ -81,12 +81,32 @@ def mergeLists(head1, head2):
     
     return merged.head  
 
+def minimumBribes(q): 
+    moves = [q[i-1] - i for i in range(1, len(q) + 1)]
+    total = 0 
+    chaos = False
+    print(moves)
+    for move in moves:
+        if move > 0:
+            total += move 
+        if move > 2:
+            chaos = True 
+    if chaos:
+        return "Too chaotic"
+    else:
+        return total 
 
 
 
 
 def main(): 
     
+    print(minimumBribes([1,2,5,3,7,8,6,4]))
+    assert minimumBribes([4,1,2,3]) == "Too chaotic"
+    assert minimumBribes([1,2,3,5,4,6,7,8]) == 1 
+    assert minimumBribes([2,1,5,3,4]) == 3
+    assert minimumBribes([2,5,1,3,4]) == "Too chaotic"
+
     assert reverseLinkedList(sll.head).data == 9
 
 
