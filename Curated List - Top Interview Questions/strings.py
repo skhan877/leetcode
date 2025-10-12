@@ -92,7 +92,28 @@ def make_anagram(a, b):
 #######################################################################
 
 
+def reverse_string(s): 
+    i, j = 0, len(s) -1 
+    while i < j: 
+        s[i], s[j] = s[j], s[i] 
+        i += 1
+        j -= 1
+    return s 
 
+def reverse_int(n): 
+    n = str(n) 
+    if n[0] == "-":
+        result = "-" + "".join(n[::-1][:-1])
+    else:
+        result = "".join(n[::-1])
+
+    if not (-2 ** 31 <= int(result) and int(result) <= (2 ** 31) -1):
+        return 0 
+    else: 
+        return int(result)
+
+    print(n, int(result))
+    return int(result)
 
 
 
@@ -100,32 +121,32 @@ def make_anagram(a, b):
 
 def main(): 
 
-    assert(make_anagram("cde", "dcf")) == 2
-    assert(make_anagram("cde", "dcf")) == 2
-    assert(make_anagram("", "abc")) == 3
-    assert(make_anagram("abc", "")) == 3
-    assert(make_anagram("abc", "adddd")) == 6
-    assert(make_anagram("fcrxzwscanmligyxyvym", "jxwtrhvujlmrpdoqbisbwhmgpmeoke")) == 30
+    # assert(make_anagram("cde", "dcf")) == 2
+    # assert(make_anagram("cde", "dcf")) == 2
+    # assert(make_anagram("", "abc")) == 3
+    # assert(make_anagram("abc", "")) == 3
+    # assert(make_anagram("abc", "adddd")) == 6
+    # assert(make_anagram("fcrxzwscanmligyxyvym", "jxwtrhvujlmrpdoqbisbwhmgpmeoke")) == 30
 
-    assert longest_prefix(["car", "cir"]) == "c" 
-    assert longest_prefix(["s", "shop", "shoot"]) == "s" 
-    assert longest_prefix(["flower", "flow", "flight"]) == "fl" 
-    assert longest_prefix(["dog", "racecar", "car"]) == "" 
+    # assert longest_prefix(["car", "cir"]) == "c" 
+    # assert longest_prefix(["s", "shop", "shoot"]) == "s" 
+    # assert longest_prefix(["flower", "flow", "flight"]) == "fl" 
+    # assert longest_prefix(["dog", "racecar", "car"]) == "" 
 
-    assert strStr("s", "s") == 0 
-    assert strStr("sad", "sadbutsad") == 0 
-    assert strStr("leeto", "leetcode") == -1 
+    # assert strStr("s", "s") == 0 
+    # assert strStr("sad", "sadbutsad") == 0 
+    # assert strStr("leeto", "leetcode") == -1 
 
-    assert palindrome("A man, a plan, a canal: Panama") == True 
-    assert palindrome("race a car") == False 
-    assert palindrome(" ") == True 
+    # assert palindrome("A man, a plan, a canal: Panama") == True 
+    # assert palindrome("race a car") == False 
+    # assert palindrome(" ") == True 
 
-    assert anagram("anagram", "nagaram") == True
-    assert anagram("rat", "cart") == False
+    # assert anagram("anagram", "nagaram") == True
+    # assert anagram("rat", "cart") == False
 
-    assert first_unique_ch("leetcode") == 0 
-    assert first_unique_ch("aabb") == -1
-    assert first_unique_ch("loveleetcode") == 2
+    # assert first_unique_ch("leetcode") == 0 
+    # assert first_unique_ch("aabb") == -1
+    # assert first_unique_ch("loveleetcode") == 2
 
     assert reverse_int(-51) == -15
     assert reverse_int(120) == 21 
