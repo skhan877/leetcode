@@ -112,11 +112,28 @@ def reverse_int(n):
     else: 
         return int(result)
 
-    print(n, int(result))
-    return int(result)
+def first_unique_ch(s): 
+    from collections import Counter 
+    counts = Counter(s)
+    idx = []
+    for k, v in counts.items():
+        if v == 1:
+            idx.append(s.index(k))
+    return min(idx) if idx else -1
 
+def anagram(s, t): 
+    from collections import Counter 
+    return Counter(s) == Counter(t)
 
-
+def palindrome(s): 
+    stripped_s = "".join([ch.lower() for ch in s if ch.isalpha() or ch.isnumeric()])
+    i, j = 0, len(stripped_s) - 1 
+    while i < j: 
+        if stripped_s[i] != stripped_s[j]:
+            return False
+        i += 1
+        j -= 1
+    return True 
 
 
 def main(): 
@@ -137,16 +154,16 @@ def main():
     # assert strStr("sad", "sadbutsad") == 0 
     # assert strStr("leeto", "leetcode") == -1 
 
-    # assert palindrome("A man, a plan, a canal: Panama") == True 
-    # assert palindrome("race a car") == False 
-    # assert palindrome(" ") == True 
+    assert palindrome("A man, a plan, a canal: Panama") == True 
+    assert palindrome("race a car") == False 
+    assert palindrome(" ") == True 
 
-    # assert anagram("anagram", "nagaram") == True
-    # assert anagram("rat", "cart") == False
+    assert anagram("anagram", "nagaram") == True
+    assert anagram("rat", "cart") == False
 
-    # assert first_unique_ch("leetcode") == 0 
-    # assert first_unique_ch("aabb") == -1
-    # assert first_unique_ch("loveleetcode") == 2
+    assert first_unique_ch("leetcode") == 0 
+    assert first_unique_ch("aabb") == -1
+    assert first_unique_ch("loveleetcode") == 2
 
     assert reverse_int(-51) == -15
     assert reverse_int(120) == 21 
