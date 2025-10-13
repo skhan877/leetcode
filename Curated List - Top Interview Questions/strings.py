@@ -135,6 +135,20 @@ def palindrome(s):
         j -= 1
     return True 
 
+def strStr(needle: str, haystack: str) -> int: 
+    if needle == haystack:
+        return 0
+    
+    p, q = 0, len(needle)
+    if q > 1:
+        while q <= len(haystack):
+            if haystack[p:q] != needle:
+                p += 1
+                q += 1
+            else:
+                return p
+    return -1
+
 
 def main(): 
 
@@ -150,9 +164,9 @@ def main():
     # assert longest_prefix(["flower", "flow", "flight"]) == "fl" 
     # assert longest_prefix(["dog", "racecar", "car"]) == "" 
 
-    # assert strStr("s", "s") == 0 
-    # assert strStr("sad", "sadbutsad") == 0 
-    # assert strStr("leeto", "leetcode") == -1 
+    assert strStr("s", "s") == 0 
+    assert strStr("sad", "sadbutsad") == 0 
+    assert strStr("leeto", "leetcode") == -1 
 
     assert palindrome("A man, a plan, a canal: Panama") == True 
     assert palindrome("race a car") == False 
