@@ -149,6 +149,22 @@ def strStr(needle: str, haystack: str) -> int:
                 return p
     return -1
 
+def longest_prefix(strs): 
+    common = [] 
+    sorted_strs = sorted(strs, key=len) 
+    p = 0 
+    while p < len(sorted_strs[0]): 
+        cur_substr = [] 
+        for str in strs:
+            cur_substr.append(str[p])
+        if len(set(cur_substr)) == 1:
+            common.append(cur_substr[0])
+            p += 1 
+        else: 
+            break 
+    
+    return "" if not common else "".join(common)
+
 
 def main(): 
 
@@ -159,10 +175,10 @@ def main():
     # assert(make_anagram("abc", "adddd")) == 6
     # assert(make_anagram("fcrxzwscanmligyxyvym", "jxwtrhvujlmrpdoqbisbwhmgpmeoke")) == 30
 
-    # assert longest_prefix(["car", "cir"]) == "c" 
-    # assert longest_prefix(["s", "shop", "shoot"]) == "s" 
-    # assert longest_prefix(["flower", "flow", "flight"]) == "fl" 
-    # assert longest_prefix(["dog", "racecar", "car"]) == "" 
+    assert longest_prefix(["car", "cir"]) == "c" 
+    assert longest_prefix(["s", "shop", "shoot"]) == "s" 
+    assert longest_prefix(["flower", "flow", "flight"]) == "fl" 
+    assert longest_prefix(["dog", "racecar", "car"]) == "" 
 
     assert strStr("s", "s") == 0 
     assert strStr("sad", "sadbutsad") == 0 
