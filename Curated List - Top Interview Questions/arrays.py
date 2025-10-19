@@ -150,10 +150,10 @@ def max_profit(prices):
     return max_pnl
 
 def single_num(nums): 
-    if len(nums) == 1:
-        return nums[0] 
-    else:
-        return 
+    result = 0 
+    for i in range(len(nums)):
+        result ^= nums[i] 
+    return result 
 
 
 def main(): 
