@@ -127,10 +127,32 @@ def rotate(matrix):
     pass 
 
 
-def main(): 
-    
 
-    assert rotate([[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]) == [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]] 
+
+#######################################################################
+####################### starting again 19.10.25 #######################
+#######################################################################
+
+def remove_duplicates(nums): 
+    i = 1
+    while i < len(nums):
+        if nums[i] == nums[i-1]:
+            del nums[i]
+        else:
+            i += 1
+
+    # print(nums)
+    return len(nums)
+
+def max_profit(prices): 
+    daily_pnl = [prices[i] - prices[i-1] for i in range(1, len(prices))]
+    max_pnl = sum([pnl for pnl in daily_pnl if pnl > 0])
+    return max_pnl
+
+
+def main(): 
+
+    # assert rotate([[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]) == [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]] 
 
     # board1 = [["5","3",".",".","7",".",".",".","."]
     #         ,["6",".",".","1","9","5",".",".","."]
@@ -180,11 +202,12 @@ def main():
     # assert rotate([1,2,3,4,5,6,7], 3) == [5,6,7,1,2,3,4]
     # assert rotate([-1,-100,3,99], 2) == [3,99,-1,-100]
     
-    # assert max_profit([7,1,5,3,6,4]) == 7
-    # assert max_profit([1,2,3,4,5]) == 4
-    # assert max_profit([7,6,4,3,1]) == 0
+    assert max_profit([7,1,5,3,6,4]) == 7
+    assert max_profit([1,2,3,4,5]) == 4
+    assert max_profit([7,6,4,3,1]) == 0
     
-    # print(remove_duplicates([1,1,2]))
+    assert remove_duplicates([1,1,2]) == 2
+    assert remove_duplicates([0,0,1,1,1,2,2,3,3,4]) == 5
 
 
 
