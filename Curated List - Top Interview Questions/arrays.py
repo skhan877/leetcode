@@ -149,6 +149,12 @@ def max_profit(prices):
     max_pnl = sum([pnl for pnl in daily_pnl if pnl > 0])
     return max_pnl
 
+def single_num(nums): 
+    if len(nums) == 1:
+        return nums[0] 
+    else:
+        return 
+
 
 def main(): 
 
@@ -194,10 +200,10 @@ def main():
     # assert intersect([1,2,2,1], [2,2]) == [2,2]
     # assert intersect([4,9,5], [9,4,9,8,4]) == [4,9]
     
-    # assert single_num([1,2,1]) == 2 
-    # assert single_num([2,2,1]) == 1
-    # assert single_num([4,1,2,1,2]) == 4
-    # assert single_num([1]) == 1
+    assert single_num([1,2,1]) == 2 
+    assert single_num([2,2,1]) == 1
+    assert single_num([4,1,2,1,2]) == 4
+    assert single_num([1]) == 1
     
     # assert rotate([1,2,3,4,5,6,7], 3) == [5,6,7,1,2,3,4]
     # assert rotate([-1,-100,3,99], 2) == [3,99,-1,-100]
