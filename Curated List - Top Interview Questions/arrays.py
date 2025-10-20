@@ -155,6 +155,20 @@ def single_num(nums):
         result ^= nums[i] 
     return result 
 
+def intersect(nums1, nums2): 
+    i = 0
+    result = []
+    for num in nums1:
+        if num in nums2:
+            result.append(num)
+            nums2.remove(num)
+            if not nums2:
+                break
+    return result 
+
+
+
+
 
 def main(): 
 
@@ -195,10 +209,10 @@ def main():
     # assert plus_one([9]) == [1,0]
     # assert plus_one([0]) == [1]
     
-    # assert intersect([1], [2,2,1]) == [1]
-    # assert intersect([1], [2,2]) == []
-    # assert intersect([1,2,2,1], [2,2]) == [2,2]
-    # assert intersect([4,9,5], [9,4,9,8,4]) == [4,9]
+    assert intersect([1], [2,2,1]) == [1]
+    assert intersect([1], [2,2]) == []
+    assert intersect([1,2,2,1], [2,2]) == [2,2]
+    assert intersect([4,9,5], [9,4,9,8,4]) == [4,9]
     
     assert single_num([1,2,1]) == 2 
     assert single_num([2,2,1]) == 1
