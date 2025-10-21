@@ -166,8 +166,18 @@ def intersect(nums1, nums2):
                 break
     return result 
 
+def plus_one(digits):
+    num = int("".join([str(d) for d in digits]))
+    num += 1
+    num = [int(n) for n in str(num)]
+    return num
 
+def move_zeroes(nums): 
+    for i in range(len(nums)):
+        if nums[i] == 0:
+            nums.append(nums.pop(i))
 
+    return nums
 
 
 def main(): 
@@ -201,13 +211,13 @@ def main():
     # assert two_sum([3,2,4], 6) == [1,2]
     # assert two_sum([3,3], 6) == [0,1]
     
-    # assert move_zeroes([0,1,0,3,12]) == [1,3,12,0,0]
-    # assert move_zeroes([0]) == [0]
+    assert move_zeroes([0,1,0,3,12]) == [1,3,12,0,0]
+    assert move_zeroes([0]) == [0]
     
-    # assert plus_one([1,2,3]) == [1,2,4]
-    # assert plus_one([4,3,2,1]) == [4,3,2,2]
-    # assert plus_one([9]) == [1,0]
-    # assert plus_one([0]) == [1]
+    assert plus_one([1,2,3]) == [1,2,4]
+    assert plus_one([4,3,2,1]) == [4,3,2,2]
+    assert plus_one([9]) == [1,0]
+    assert plus_one([0]) == [1]
     
     assert intersect([1], [2,2,1]) == [1]
     assert intersect([1], [2,2]) == []
