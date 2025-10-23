@@ -176,8 +176,21 @@ def move_zeroes(nums):
     for i in range(len(nums)):
         if nums[i] == 0:
             nums.append(nums.pop(i))
-
     return nums
+
+def two_sum(nums, target):
+    d = {} 
+    n = len(nums)
+    for i in range(n):
+        d[nums[i]] = i 
+    
+    print(d)
+
+    for i in range(n): 
+        complement = target - nums[i] 
+        if complement in d and d[complement] != i:
+            print([i, d[complement]])
+            return [i, d[complement]]
 
 
 def main(): 
@@ -207,9 +220,9 @@ def main():
     # assert valid_sudoku(board1) == True 
     # assert valid_sudoku(board2) == False
 
-    # assert two_sum([2,7,11,15], 9) == [0,1]
-    # assert two_sum([3,2,4], 6) == [1,2]
-    # assert two_sum([3,3], 6) == [0,1]
+    assert two_sum([2,7,11,15], 9) == [0,1]
+    assert two_sum([3,2,4], 6) == [1,2]
+    assert two_sum([3,3], 6) == [0,1]
     
     assert move_zeroes([0,1,0,3,12]) == [1,3,12,0,0]
     assert move_zeroes([0]) == [0]
