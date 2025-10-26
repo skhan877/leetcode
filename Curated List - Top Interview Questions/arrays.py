@@ -234,7 +234,8 @@ def valid_sudoku(board):
 
 def rotate_array(nums, k):
     new_nums = [nums[(i - k) % len(nums)] for i in range(len(nums))]
-    print(-3 % 7)
+    return new_nums
+    
 
 
 def main(): 
