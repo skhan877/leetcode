@@ -232,10 +232,14 @@ def valid_sudoku(board):
     
     return invalid == 0
 
+def rotate_array(nums, k):
+    new_nums = [nums[(i - k) % len(nums)] for i in range(len(nums))]
+    print(-3 % 7)
+
 
 def main(): 
 
-    # assert rotate([[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]) == [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]] 
+    # assert rotate_image([[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]) == [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]] 
 
     board1 = [["5","3",".",".","7",".",".",".","."]
             ,["6",".",".","1","9","5",".",".","."]
@@ -282,8 +286,8 @@ def main():
     assert single_num([4,1,2,1,2]) == 4
     assert single_num([1]) == 1
     
-    # assert rotate([1,2,3,4,5,6,7], 3) == [5,6,7,1,2,3,4]
-    # assert rotate([-1,-100,3,99], 2) == [3,99,-1,-100]
+    assert rotate_array([1,2,3,4,5,6,7], 3) == [5,6,7,1,2,3,4]
+    assert rotate_array([-1,-100,3,99], 2) == [3,99,-1,-100]
     
     assert max_profit([7,1,5,3,6,4]) == 7
     assert max_profit([1,2,3,4,5]) == 4
