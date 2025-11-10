@@ -41,19 +41,37 @@ def preorder(node):
     """
     current -> left -> right 
     """
-    pass 
+    if not node: 
+        return None  
+
+    print(node.val)
+    preorder(node.left)
+    preorder(node.right)
+
 
 def inorder(node):
     """
     left -> current -> right
     """
-    pass 
+    if not node:
+        return 
+    
+    inorder(node.left)
+    print(node.val)
+    inorder(node.right)
+
 
 def postorder(node): 
     """
     left -> right -> current 
     """
-    pass 
+    if not node:
+        return 
+    
+    postorder(node.left)
+    postorder(node.right)
+    print(node.val)
+
 
 def max_depth(node):
     pass 
@@ -61,3 +79,12 @@ def max_depth(node):
 def target_sum(node): 
     pass 
 
+
+def main(): 
+    # preorder(root)
+    # inorder(root)
+    postorder(root)
+
+
+if __name__ == "__main__":
+    main() 
