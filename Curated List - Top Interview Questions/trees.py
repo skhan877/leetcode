@@ -74,7 +74,14 @@ def postorder(node):
 
 
 def max_depth(node):
-    pass 
+    if not node:
+        return 0 
+    
+    left_depth = max_depth(node.left)
+    right_depth = max_depth(node.right)
+
+    return max(left_depth, right_depth) + 1
+
 
 def target_sum(node): 
     pass 
@@ -83,7 +90,8 @@ def target_sum(node):
 def main(): 
     # preorder(root)
     # inorder(root)
-    postorder(root)
+    # postorder(root)
+    print(max_depth(root))
 
 
 if __name__ == "__main__":
