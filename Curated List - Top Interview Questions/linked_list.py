@@ -5,10 +5,10 @@ Easy
 Linked Lists
 """
 
-class ListNode(): 
-    def __init__(self, x):
-        self.val = x 
-        self.next = None 
+# class ListNode(): 
+#     def __init__(self, x):
+#         self.val = x 
+#         self.next = None 
     
 
 
@@ -95,16 +95,59 @@ def palindome(head):
     return arr[::] == arr[::-1]
 
 
+
+
+#######################################################################
+####################### starting again 26.10.25 #######################
+#######################################################################
+
+
+class ListNode(): 
+    def __init__(self, val):
+        self.val = val 
+        self.next = None 
+
+
+def delete_node(node): 
+    node.val = node.next.val 
+    node.next = node.next.next 
+
+"""
+def remove_nth_last_node(head, n): 
+    len_list = 0 
+    temp = head 
+    while temp: 
+        len_list += 1 
+        temp = temp.next 
+    # print(len_list)
+ 
+    remove_idx = len_list - n
+    curr = head
+    i = 0 
+    while i < remove_idx:
+        curr = curr.next
+        i += 1
+    
+    curr.val = curr.next.val 
+    curr.next = curr.next.next 
+
+    return head 
+"""  
+
+def reverse_list(head): 
+    pass 
+
+
+
 def main():
 
-    assert palindome(head) == False 
+    # assert palindome(head) == False 
 
-    # print(reverse_list(head))
+    print(reverse_list(head))
 
     # assert(remove_nth_last_node(head, 4)) == [5,1,9]
     # assert(remove_nth_last_node(head, 2)) == [4,5,9]
     # assert(remove_nth_last_node(head, 1)) == [4,5,1]
-    
 
 
 
