@@ -86,12 +86,52 @@ def max_depth(node):
 def target_sum(node): 
     pass 
 
+def valid_bst(node):
+    """
+    5 1 4 null null 3 6 
+
+while node:
+
+    node = 5
+    node.left = 1 
+    node.right = 4
+
+    node = node.left
+        node = 1
+        node.left = null 
+        node.right = null
+
+        node = node.left 
+
+
+    lst = 2 1 3 
+    n = len(lst)
+    root = lst[0] 
+    for i in range(1, n):
+        if lst[i] 
+    
+    
+    preorder: node, node.left, node.right 
+    i = 0 
+    n = len(arr) 
+    while i < n: 
+        childless = [node]
+        node = arr[i] 
+        node = node.left         
+        i += 1 
+        
+    """
+
+
+    return 
+
 
 def main(): 
     # preorder(root)
     # inorder(root)
     # postorder(root)
     print(max_depth(root))
+    
 
 
 if __name__ == "__main__":
