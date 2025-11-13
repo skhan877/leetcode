@@ -65,6 +65,13 @@ def max_profit(prices):
         q += 1 
     return max_prof
 
+def balloons(text: str) -> int: 
+    from collections import Counter 
+    available_chars = Counter(text) 
+    num_balloons = available_chars["b"]
+    for ch in text: 
+        num_balloons = min(num_balloons, available_chars[ch])
+    return num_balloons
 
 
 def main(): 
@@ -78,6 +85,11 @@ def main():
 
     assert max_profit([7,1,5,3,6,4]) == 5 
     assert max_profit([7,6,4,3,1]) == 0 
+
+    assert balloons("nlaebolko") == 1 
+    assert balloons("loonbalxballpoon") == 2 
+    assert balloons("leetcode") == 0
+
 
 if __name__ == "__main__": 
     main() 
