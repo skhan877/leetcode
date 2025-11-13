@@ -71,6 +71,13 @@ def balloons(text: str) -> int:
     max_inst = min(ch_count["b"], ch_count["a"], ch_count["n"], ch_count["l"] // 2, ch_count["o"] // 2)
     return max_inst
 
+def move_zeroes(nums):
+    n = len(nums) 
+    for i in range(n-1, -1, -1):
+        if nums[i] == 0:
+            nums.append(nums.pop(i))
+    return nums
+
 
 def main(): 
     # assert basic_calculator_two(s="30+2*2") == 34
@@ -90,6 +97,9 @@ def main():
     assert balloons("ballon") == 0
     assert balloons("krhizmmgmcrecekgyljqkldocicziihtgpqwbticmvuyznragqoyrukzopfmjhjjxemsxmrsxuqmnkrzhgvtgdgtykhcglurvppvcwhrhrjoislonvvglhdciilduvuiebmffaagxerjeewmtcwmhmtwlxtvlbocczlrppmpjbpnifqtlninyzjtmazxdbzwxthpvrfulvrspycqcghuopjirzoeuqhetnbrcdakilzmklxwudxxhwilasbjjhhfgghogqoofsufysmcqeilaivtmfziumjloewbkjvaahsaaggteppqyuoylgpbdwqubaalfwcqrjeycjbbpifjbpigjdnnswocusuprydgrtxuaojeriigwumlovafxnpibjopjfqzrwemoinmptxddgcszmfprdrichjeqcvikynzigleaajcysusqasqadjemgnyvmzmbcfrttrzonwafrnedglhpudovigwvpimttiketopkvqw") == 10
 
+    assert move_zeroes([0,1,0,3,12]) == [1,3,12,0,0]
+    assert move_zeroes([0]) == [0]
+    assert move_zeroes([0,0,1]) == [1,0,0]
 
 if __name__ == "__main__": 
     main() 
