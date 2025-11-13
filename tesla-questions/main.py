@@ -16,6 +16,8 @@ def basic_calculator_two(s: str) -> int:
     return result 
 
 def min_operations(s: str) -> int: 
+    if len(s) == 1:
+        return 0 
     start0 = 0 
     start1 = 0 
     for i in range(len(s)): 
@@ -26,8 +28,10 @@ def min_operations(s: str) -> int:
                 start1 += 1
         else:
             if s[i] == "1":
-                pass 
-            
+                start1 += 1 
+            else:
+                start0 += 1 
+    return min(start0, start1)
 
 
 def main(): 
