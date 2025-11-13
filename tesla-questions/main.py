@@ -66,12 +66,10 @@ def max_profit(prices):
     return max_prof
 
 def balloons(text: str) -> int: 
-    from collections import Counter 
-    available_chars = Counter(text) 
-    num_balloons = available_chars["b"]
-    for ch in text: 
-        num_balloons = min(num_balloons, available_chars[ch])
-    return num_balloons
+    from collections import Counter
+    ch_count = Counter(text) 
+    max_inst = min(ch_count["b"], ch_count["a"], ch_count["n"], ch_count["l"] // 2, ch_count["o"] // 2)
+    return max_inst
 
 
 def main(): 
@@ -89,6 +87,8 @@ def main():
     assert balloons("nlaebolko") == 1 
     assert balloons("loonbalxballpoon") == 2 
     assert balloons("leetcode") == 0
+    assert balloons("ballon") == 0
+    assert balloons("krhizmmgmcrecekgyljqkldocicziihtgpqwbticmvuyznragqoyrukzopfmjhjjxemsxmrsxuqmnkrzhgvtgdgtykhcglurvppvcwhrhrjoislonvvglhdciilduvuiebmffaagxerjeewmtcwmhmtwlxtvlbocczlrppmpjbpnifqtlninyzjtmazxdbzwxthpvrfulvrspycqcghuopjirzoeuqhetnbrcdakilzmklxwudxxhwilasbjjhhfgghogqoofsufysmcqeilaivtmfziumjloewbkjvaahsaaggteppqyuoylgpbdwqubaalfwcqrjeycjbbpifjbpigjdnnswocusuprydgrtxuaojeriigwumlovafxnpibjopjfqzrwemoinmptxddgcszmfprdrichjeqcvikynzigleaajcysusqasqadjemgnyvmzmbcfrttrzonwafrnedglhpudovigwvpimttiketopkvqw") == 10
 
 
 if __name__ == "__main__": 
