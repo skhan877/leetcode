@@ -33,25 +33,51 @@ def min_operations(s: str) -> int:
                 start0 += 1 
     return min(start0, start1)
 
+def valid_parens(s: str) -> bool: 
+    if len(s) == 0: return True 
+    if len(s) == 1: return False 
+    closing_to_open_map = {
+        ")" : "(",
+        "]" : "[", 
+        "}" : "{",
+    }
+    stack = [] 
+    for p in s: 
+        if p in closing_to_open_map.values():
+            stack.append(p)
+        else:
+            # is a closing parenth
+            if closing_to_open_map[p] == stack[-1]:
+                stack.pop()
+            else:
+                return False  
+    return True 
+
+def max_profit(prices): 
+    max_prof = 0 
+    n = len(prices) 
+    p, q = 0, 1 
+    while q < n: 
+        cur_prof = prices[q] - prices[p]
+        max_prof = max(max_prof, cur_prof) 
+        if cur_prof < 0: 
+            p = q 
+        q += 1 
+    return max_prof
+
+
 
 def main(): 
     # assert basic_calculator_two(s="30+2*2") == 34
+
     assert min_operations("001") == 1 
+
+    assert valid_parens("()") == True 
+    assert valid_parens("{[]}") == True
+    assert valid_parens("{]}") == False 
+
+    assert max_profit([7,1,5,3,6,4]) == 5 
+    assert max_profit([7,6,4,3,1]) == 0 
 
 if __name__ == "__main__": 
     main() 
-
-
-"""
-110 
-
-start0: 0 1 0 : odds = 1, evens = 0 
-start1: 1 0 1 : odds = 0, evens = 1 
-
-if index == even: 
-    if first is 0, all evens should be 0 and all odds should be 1
-        otherwise, if odd != 1 or even != 0, start0 += 1
-    elif first is 1, all evens should 1 and all odds should be 0 
-        otherwise, if odd index != 0 or even index != 1, start1 += 1 
-
-"""
