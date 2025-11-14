@@ -89,6 +89,10 @@ def decode_message(key: str, message: str) -> str:
     decoded = "".join([key_map[x] for x in message])
     return decoded 
 
+def is_anagram(s: str, t: str) -> bool: 
+    from collections import Counter 
+    return Counter(s) == Counter(t)
+
 
 def main(): 
     # assert basic_calculator_two(s="30+2*2") == 34
@@ -114,6 +118,10 @@ def main():
 
     assert decode_message(key="the quick brown fox jumps over the lazy dog", message="vkbs bs t suepuv") == "this is a secret"
     assert decode_message(key="eljuxhpwnyrdgtqkviszcfmabo", message="zwx hnfx lqantp mnoeius ycgk vcnjrdb") == "the five boxing wizards jump quickly"
+
+    assert is_anagram("anagram", "nagaram") == True 
+    assert is_anagram("rat", "car") == False
+
 
 if __name__ == "__main__": 
     main() 
