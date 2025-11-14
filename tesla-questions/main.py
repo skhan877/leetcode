@@ -78,6 +78,17 @@ def move_zeroes(nums):
             nums.append(nums.pop(i))
     return nums
 
+def decode_message(key: str, message: str) -> str: 
+    unique_key = []
+    for k in key:
+        if k not in unique_key and k.isalpha():
+            unique_key.append(k)
+    alphabet = [ch for ch in "abcdefghijklmnopqrstuvwxyz"]
+    key_map = {unique_key[i]: alphabet[i] for i in range(len(unique_key))}
+    key_map[" "] = " "
+    decoded = "".join([key_map[x] for x in message])
+    return decoded 
+
 
 def main(): 
     # assert basic_calculator_two(s="30+2*2") == 34
@@ -100,6 +111,9 @@ def main():
     assert move_zeroes([0,1,0,3,12]) == [1,3,12,0,0]
     assert move_zeroes([0]) == [0]
     assert move_zeroes([0,0,1]) == [1,0,0]
+
+    assert decode_message(key="the quick brown fox jumps over the lazy dog", message="vkbs bs t suepuv") == "this is a secret"
+    assert decode_message(key="eljuxhpwnyrdgtqkviszcfmabo", message="zwx hnfx lqantp mnoeius ycgk vcnjrdb") == "the five boxing wizards jump quickly"
 
 if __name__ == "__main__": 
     main() 
