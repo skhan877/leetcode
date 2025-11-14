@@ -112,6 +112,9 @@ class MovingAverage:
     def view_history(self):
         print(self.vals)
 
+def tictactoe(moves) -> str: 
+    pass 
+
 
 
 def main(): 
