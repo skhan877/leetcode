@@ -93,8 +93,32 @@ def is_anagram(s: str, t: str) -> bool:
     from collections import Counter 
     return Counter(s) == Counter(t)
 
+class MovingAverage:
+    def __init__(self, size: int): 
+        self.size = size 
+        self.vals = []
+        self.avgs = [] 
+    
+    def next(self, val: int) -> float: 
+        self.val = val 
+        self.vals.append(self.val)
+        if len(self.vals) < self.size: 
+            n = len(self.vals)
+        else:
+            n = self.size 
+        self.avgs.append(sum(self.vals[-n:]) / n) 
+        return self.avgs
+
+    def view_history(self):
+        print(self.vals)
+
+
 
 def main(): 
+
+    mv = MovingAverage(3); mv.next(1); mv.next(10); mv.next(3)
+    assert mv.next(5) == [1.0, 5.5, 4.666666666666667, 6.0]
+
     # assert basic_calculator_two(s="30+2*2") == 34
 
     assert min_operations("001") == 1 
