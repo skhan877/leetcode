@@ -113,8 +113,43 @@ class MovingAverage:
         print(self.vals)
 
 def tictactoe(moves) -> str: 
-    pass 
+    grid = [["", "", ""], ["", "", ""] ,["", "", ""]] 
+    num_moves = 0 
+    for i in range(len(moves)): 
+        row, col = moves[i][0], moves[i][1]
+        if i % 2 == 0:      # player 1 
+            grid[row][col] = "X"
+            num_moves += 1
+        else:               # player 2
+            grid[row][col] = "O"
 
+        if num_moves >= 3: 
+            # start checking for winner 
+            # check row: 
+            for row in grid:
+                horizontal =  row[0] + row[1] + row[2] 
+                if horizontal ==  "XXX" or horizontal == "OOO": 
+                    return "Win"
+            # check cols:
+            for i in range(len(grid)):
+                vertical = grid[0][i] + grid[1][i] + grid[2][i] 
+                if vertical == "XXX" or vertical == "OOO": 
+                    return "Win"
+            # check diag:
+            diag1 = grid[0][0] + grid[1][1] + grid[2][2]
+            diag2 = grid[2][0] + grid[1][1] + grid[0][2]
+            if diag1 == "XXX" or diag1 == "OOO" or diag2 == "XXX" or diag2 == "OOO":
+                return "Win"
+            
+            else:
+                return "Pending"
+
+    filled = 0 
+    for row in grid:
+        if "" not in row:
+            filled += 1 
+
+    return "Draw" if filled == 3 else -1
 
 
 def main(): 
@@ -148,6 +183,9 @@ def main():
 
     assert is_anagram("anagram", "nagaram") == True 
     assert is_anagram("rat", "car") == False
+
+    assert tictactoe([[0,0], [2,0], [1,1], [2,1], [2,2]]) == "Win"
+    assert tictactoe([[0,0], [2,0], [1,1], [2,1], [0,2]]) == "Pending"
 
 
 if __name__ == "__main__": 
