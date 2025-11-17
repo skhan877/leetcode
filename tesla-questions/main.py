@@ -115,8 +115,10 @@ class MovingAverage:
 def tictactoe(moves) -> str: 
     grid = [["", "", ""], ["", "", ""] ,["", "", ""]] 
     num_moves = 0 
+    
     for i in range(len(moves)): 
         row, col = moves[i][0], moves[i][1]
+        
         if i % 2 == 0:      # player 1 
             grid[row][col] = "X"
             num_moves += 1
@@ -128,18 +130,18 @@ def tictactoe(moves) -> str:
             # check row: 
             for row in grid:
                 horizontal =  row[0] + row[1] + row[2] 
-                if horizontal ==  "XXX" or horizontal == "OOO": 
-                    return "Win"
+                if horizontal ==  "XXX": return "A"
+                elif horizontal == "OOO": return "B"
             # check cols:
             for i in range(len(grid)):
                 vertical = grid[0][i] + grid[1][i] + grid[2][i] 
-                if vertical == "XXX" or vertical == "OOO": 
-                    return "Win"
+                if vertical == "XXX": return "A"
+                elif vertical == "OOO": return "B"
             # check diag:
             diag1 = grid[0][0] + grid[1][1] + grid[2][2]
             diag2 = grid[2][0] + grid[1][1] + grid[0][2]
-            if diag1 == "XXX" or diag1 == "OOO" or diag2 == "XXX" or diag2 == "OOO":
-                return "Win"
+            if diag1 == "XXX" or diag2 == "XXX": return "A"
+            elif diag1 == "OOO" or diag2 == "OOO": return "B"
             
             else:
                 return "Pending"
@@ -150,6 +152,8 @@ def tictactoe(moves) -> str:
             filled += 1 
 
     return "Draw" if filled == 3 else -1
+
+
 
 
 def main(): 
@@ -184,8 +188,9 @@ def main():
     assert is_anagram("anagram", "nagaram") == True 
     assert is_anagram("rat", "car") == False
 
-    assert tictactoe([[0,0], [2,0], [1,1], [2,1], [2,2]]) == "Win"
+    assert tictactoe([[0,0], [2,0], [1,1], [2,1], [2,2]]) == "A"
     assert tictactoe([[0,0], [2,0], [1,1], [2,1], [0,2]]) == "Pending"
+    assert tictactoe([[0,0],[1,1],[0,1],[0,2],[1,0],[2,0]]) == "B"
 
 
 if __name__ == "__main__": 
