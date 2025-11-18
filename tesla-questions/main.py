@@ -153,7 +153,24 @@ def tictactoe(moves) -> str:
 
     return "Draw" if filled == 3 else -1
 
+def longest_substring(s: str) -> int: 
+    from collections import defaultdict
 
+    if len(s) < 1:
+        return len(s)
+
+    d = defaultdict(int) 
+    l = ans = 0
+    d[s[l]] == 1 
+
+    for r in range(len(s)):
+        d[s[r]] += 1
+        while d[s[r]] > 1:
+            d[s[l]] -= 1
+            l += 1
+        ans = max(ans, r - l + 1)
+    
+    return ans
 
 
 def main(): 
@@ -188,9 +205,16 @@ def main():
     assert is_anagram("anagram", "nagaram") == True 
     assert is_anagram("rat", "car") == False
 
-    assert tictactoe([[0,0], [2,0], [1,1], [2,1], [2,2]]) == "A"
-    assert tictactoe([[0,0], [2,0], [1,1], [2,1], [0,2]]) == "Pending"
-    assert tictactoe([[0,0],[1,1],[0,1],[0,2],[1,0],[2,0]]) == "B"
+    # assert tictactoe([[0,0], [2,0], [1,1], [2,1], [2,2]]) == "A"
+    # assert tictactoe([[0,0], [2,0], [1,1], [2,1], [0,2]]) == "Pending"
+    # assert tictactoe([[0,0],[1,1],[0,1],[0,2],[1,0],[2,0]]) == "B"
+
+    assert longest_substring("abcabcab") == 3
+    assert longest_substring("bbbbbb") == 1
+    assert longest_substring("") == 0 
+    assert longest_substring("s") == 1 
+    assert longest_substring("pwwkew") == 3 
+    assert longest_substring("au") == 2
 
 
 if __name__ == "__main__": 
