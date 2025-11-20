@@ -172,8 +172,48 @@ def longest_substring(s: str) -> int:
     
     return ans
 
+def longest_palindome(s: str) -> int: 
+    n = len(s) 
+    if n <= 1:
+        return n 
+
+    else:
+
+        res = ""    
+        maxLen = 0 
+
+        if n % 2 == 0:  
+            for i in range(n):
+                p, q = i, i + 1
+                while p >= 0 and q < n and s[p] == s[q]:
+                    curLen = q - p + 1
+                    if curLen > maxLen:
+                        maxLen = curLen 
+                        print(s[p: q + 1])
+                        res = s[p:q+1]
+                    p -= 1
+                    q += 1
+    
+        elif n % 2 != 0:
+            for i in range(n):
+                p, q = i, i 
+                while p >= 0 and q < n and s[p] == s[q]:
+                    curLen = q - p + 1
+                    if curLen > maxLen:
+                        maxLen = curLen 
+                        print(s[p: q + 1])
+                        res = s[p:q+1]
+                    p -= 1
+                    q += 1
+    
+        print("hello", res, maxLen)
+        return res 
+
+
 
 def main(): 
+
+
 
     mv = MovingAverage(3); mv.next(1); mv.next(10); mv.next(3)
     assert mv.next(5) == [1.0, 5.5, 4.666666666666667, 6.0]
@@ -216,6 +256,10 @@ def main():
     assert longest_substring("pwwkew") == 3 
     assert longest_substring("au") == 2
 
+    print(longest_substring("cbbd"))
+    # assert longest_substring("cbbd") == "bb"
+    # assert longest_palindome("babad") == "bab"
+    
 
 if __name__ == "__main__": 
-    main() 
+    main()
